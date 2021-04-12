@@ -60,6 +60,28 @@ long long StringToIntCore(const char *str,bool minus)
 }
 
 ```
+## 559
+树形结构DFS计算深度
+return深度，并且在函数体内判断深度是否为最深或者最浅
+```C++
+class Solution {
+public:
+    int CountDepth(Node *root){
+        if(root==NULL)return 0;
+        int depth  = 0;
+        for(auto i:root->children)
+        {
+            depth = max(depth,CountDepth(i));
+        }
+
+        return depth+1;
+    }
+    int maxDepth(Node* root) {
+        return CountDepth(root);
+    }
+};
+```
+
 
 ## BFS广搜
 ```
@@ -86,7 +108,7 @@ void BFS()
 
 }
 ```
-## 1091.二进制矩阵中的最短路径
+- ## 1091.二进制矩阵中的最短路径
 ```cpp
 class Solution {
 public:
