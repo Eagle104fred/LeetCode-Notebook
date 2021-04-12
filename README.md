@@ -60,7 +60,7 @@ long long StringToIntCore(const char *str,bool minus)
 }
 
 ```
-## 559
+## 559.N叉树的最大深度
 树形结构DFS计算深度
 return深度，并且在函数体内判断深度是否为最深或者最浅
 ```C++
