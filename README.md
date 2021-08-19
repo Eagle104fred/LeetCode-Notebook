@@ -6,6 +6,34 @@
 
 ## 93.复原 IP 地址
 直接对原字符串进行增减"."操作, 效率较高, 使用回溯法解决
+```Csharp
+private void BackTracking(string s, IList<string> result, int startIndex,int pointNum)
+        {
+            if (pointNum==3)//使用句号的个数判断是否结束循环
+            {
+                if (IsVaild(s, startIndex, s.Length - 1)) //KS: 判断第四子串 
+                {
+                    result.Add(s) ; //KS: 不进行分隔 
+                }             
+                return;
+            }
+            for (int i = startIndex; i < s.Length; i++)
+            {
+                if (IsVaild(s, startIndex, i))
+                {
+                    s=s.Insert(i + 1, "."); //KS: 直接操作原字符串,(精髓, 艺高人胆大卡尔牛逼) 
+                    pointNum++;
+                    BackTracking(s, result, i + 2, pointNum); //KS: +2避免指向句号 
+                    pointNum--;
+                    s=s.Remove(i + 1, 1); //KS: 回退句号 
+                }
+                else
+                {
+                    break; //KS: 一旦不符合子串规范直接终止当前子串的循环
+                }
+            }
+        }
+```
 
 ## 96.不同搜索树(好题)
 关键是在于轮询所有的动归数组
